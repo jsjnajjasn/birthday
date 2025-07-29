@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday, Dinārs!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: #f0f8ff;
+      font-family: Arial, sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-size: 48px;
+      margin-top: 60px;
+      color: #333;
+    }
+    p {
+      font-size: 24px;
+      color: #666;
+    }
+    .main-image {
+      margin-top: 30px;
+      max-width: 90%;
+      height: auto;
+      position: relative;
+      z-index: 1;
+    }
+    .redbull {
+      position: absolute;
+      right: 10%;
+      top: 62%;
+      width: 220px;
+      z-index: 2;
+    }
+    .balloons {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: 0;
+    }
+    canvas#confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 3;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <h1>Happy Birthday, Dinārs!</h1>
+  <p>Here is your first Rolls Royce.</p>
+
+  <!-- Rolls Royce (no Wikimedia Commons) -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/2018_Rolls-Royce_Phantom_VIII_IMG_2607.jpg/640px-2018_Rolls-Royce_Phantom_VIII_IMG_2607.jpg" alt="Rolls Royce" class="main-image" />
+
+  <!-- Red Bull (no Wikimedia Commons) -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Red_Bull_energy_drink_logo.svg/220px-Red_Bull_energy_drink_logo.svg.png" alt="Red Bull" class="redbull" />
+
+  <!-- Balloons (vienkāršas rozā baloni no Pixabay) -->
+  <img src="https://cdn.pixabay.com/photo/2017/07/25/19/58/balloons-2534842_1280.png" alt="Balloons" class="balloons" />
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const canvas = document.getElementById('confetti');
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function launchConfetti() {
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    launchConfetti();
+    setTimeout(launchConfetti, 500);
+  </script>
+</body>
+</html>
